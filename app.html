@@ -56,7 +56,7 @@
             <div class="col col-lg-5 mt-2">
                 <h5 class="border-2 border-secondary border-bottom">Enter a phrase or word to check</h5>
                 <input type="text" placeholder="Enter a String" class="form-control" id="userInput">
-                <button type="button" class="btn btn-dark mt-2">Check It</button>
+                <button type="button" class="btn btn-dark mt-2" id="btnSubmit">Check It</button>
             </div>
         </div>
     </div>
@@ -91,5 +91,6 @@
         integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous">
     </script>
     <script src="/JS/site.js"></script>
+    <script>document.getElementById("btnSubmit").addEventListener("click",getValue);</script>
 </body>
 </html>
