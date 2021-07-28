@@ -1,5 +1,5 @@
 :root {
-    --primary-color: #1d5888;
+    --primary-color: #5d823a;
     --secondary-color: #5d823a;
     --dark-color: #292929;
     --white-color: #e7e7e7;
@@ -32,7 +32,7 @@ footer .social > a {
 
 footer .social > a:hover {
     opacity: 0.9;
-    color: #0d6efd;
+    color: #5d823a;
 }
 
 .bsicon {

@@ -10,7 +10,7 @@
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-    <script src="https://kit.fontawesome.com/5db21ba9c6.js" crossorigin="anonymous"></script>
+    <scrip src="https://kit.fontawesome.com/5db21ba9c6.js" crossorigin="anonymous"></script>
     <link href="/CSS/site.css" rel="stylesheet">
     <link href="/CSS/prism.css" rel="stylesheet">
     <link rel="icon" type="image/png" href="IMG/favicon-32x32.png">
@@ -53,17 +53,69 @@
         <div class="row row-cols-1 row-cols-lg-2">
             <div class="col-lg-8">
                 <pre class="line-numbers"><code class="language-javascript">
-                        //Call Hello World
-                        function HelloWorld(){
-                            alert("hello World");
+                    //get the user input
+                    function getValue(){
+                    
+                        document.getElementById("alert").classList.add("invisible");
+                    
+                        let originalString = document.getElementById("userInput").value.replace(/[^0-9a-zA-Z]/g, '').toLowerCase();
+                    
+                        let userString = document.getElementById("userInput").value.replace(/[^0-9a-zA-Z]/g, '').toLowerCase();
+                    
+                        let revString = reverseString(userString);
+                    
+                        checkValues(revString, originalString);
+                    }
+                    
+                    //reverse the string
+                    function reverseString(userString){
+                    
+                        let revString = [];
+                    
+                        for (let i = userString.length - 1; i >= 0; i--) {
+                            revString += userString[i];
                         }
+                        return revString;
+                    }
+
+                    //check for palindrome
+                    function checkValues(revString, originalString){
+                    
+                        //check to see if first user input string is equal to reversed string (should be a truthy statement); if yes, good message; if falsy, bad message
+                        if (revString === originalString) {
+                            document.getElementById("alertHeading").innerHTML = `Well done! You entered a palindrome!`;
+                            document.getElementById("msg").innerHTML = `Your message reversed is: ${revString}`;
+                            document.getElementById("alert").classList.remove("invisible");
+                        } else {
+                            document.getElementById("alertHeading").innerHTML = `Sorry!`;
+                            document.getElementById("msg").innerHTML = `That's not a palindrome.`;
+                            document.getElementById("alert").classList.remove("invisible");
+                        }
+                    }
+
+                    //inline scripts from app.html for button trigger
+                        //bottom of app.html
+                        document.getElementById("btnSubmit").addEventListener("click",getValue);
+                        //inside text-box html element
+                        onkeydown = "if (event.keyCode == 13)
+                        document.getElementById('btnSubmit').click(getValue)"
+
                     </code>
                 </pre>
             </div>
             <div class="col-lg-4">
-                <p>The Code is structured in one function.</p>
-                <h5>Hello World</h5>
-                <p>Hello World is a function that displays an alert with a message of "Hello World"</p>
+                <p>The code shown contains all of the Javascript used in this project. Most of the Javascript is contained inside of an external script, site.js. Two-ish lines of Javascript runs inline inside of app.html. A few key pieces of it are explained below.</p>
+                <h5>getValue</h5>
+                <p><b>getValue</b> is a function that is triggered when the "Check It" button is clicked on the app webpage. (See the bottom of the Javascript.)
+                <br>Line 4: It first makes the "alert" HTML element invisible to the user, (which it will then make visible later once the string has been reversed.)
+                <br>Line 6: A variable is declared that will be used to represent the original user input unaltered (except for making all characters lowercase and removing non-aphanumeric characters.
+                <br>Line 8: Same as line 8, but this string will be used in our <b>revString</b> function.
+                <br>Line 10: A variable is declared and set equal to our <b>revString</b> function (which is called) with the variable <b>userString</b> set as the parameter.
+                <br>Line 12: The function <b>checkValues</b> is called.</p>
+                <h5>reverseString</h5>
+                <p>This function takes in <b>userString</b> and reverses it using a <b>for loop</b>. Then, the variable <b>revString</b> is returned.</p>
+                <h5>checkValues</h5>
+                <p>An <b>if else</b> statement is created that compares the variables <b>revString</b> and <b>originalString</b>. If these variables are exactly the same, then a success message is presented. If they are not the same, then an error message is presented. Also, in either case, the class "invisible" is removed from our alert so the message can be seen.</p>
             </div>
         </div>
     </div>
